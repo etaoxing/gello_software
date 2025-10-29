@@ -36,16 +36,21 @@ POSITION_CONTROL_MODE = 3
 
 # Servo-specific mappings and limits
 TORQUE_TO_CURRENT_MAPPING = {
-    "XC330_T288_T": 1158.73,
-    "XM430_W210_T": 1000 / 2.69,
+    #"XC330_T288_T": 1158.73,
+    #"XM430_W210_T": 1000 / 2.69,
+    "XM430_W350_T": 1000/2.69,   # ≈ 559 mA per N·m (spec ~1.78–1.81 Nm/A)
+    "XC330_T181_T": 1052.63,          # 0.80 N·m @ 0.88 A -> ~1100 mA/N·m
+    "XC330_M288_T": 1935.48,   # ≈ 1935 mA per N·m
 }
 
 # Servo specifications for current limits (in mA)
 SERVO_CURRENT_LIMITS = {
-    "XC330_T288_T": 1193,
-    "XM430_W210_T": 1263,
+    #"XC330_T288_T": 1193,
+    #"XM430_W210_T": 1263,
+    "XM430_W350_T": 1193,  
+    "XC330_T181_T": 910,              
+    "XC330_M288_T": 2352,                
 }
-
 
 class DynamixelDriverProtocol(Protocol):
     def set_joints(self, joint_angles: Sequence[float]):
